@@ -2,7 +2,7 @@
 
 ### Сделал просто в html, без сборки webpack'ом и т.д., для экономии времени.
 
-[Рабочий пример](https://cdn.rawgit.com/ggdiam/OneTwoTripTest/e01e784d/index.html)
+[Рабочий пример](https://cdn.rawgit.com/ggdiam/OneTwoTripTest/2a0ecb2e/index.html)
 
 Необходимо разработать виджет, используя стек React + Redux (Webpack, ES­2015 по  желанию). 
 
