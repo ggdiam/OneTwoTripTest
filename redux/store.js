@@ -49,6 +49,7 @@ function rootReducer (state = initialState, action) {
 
             //выбираем / снимаем выбор с авиакомпаний
             var ix = selectedCarriers.indexOf(carrier);
+            var allIx = selectedCarriers.indexOf(allCarriers);
             if (isChecked) {
                 if (carrier == allCarriers) {//выбрано все - добавляем в выбранные все
                     selectedCarriers = [...state.carriers];
@@ -56,6 +57,11 @@ function rootReducer (state = initialState, action) {
                 else {//выбрана одна - добавляем в выбранные одну
                     if (ix == -1) {
                         selectedCarriers.push(carrier);
+                    }
+
+                    //если выбраны все, кроме "выбрать все" - то довыбираем и ее
+                    if (selectedCarriers.length == state.carriers.length - 1 && allIx == -1) {
+                        selectedCarriers.push(allCarriers);
                     }
                 }
             }
@@ -67,9 +73,14 @@ function rootReducer (state = initialState, action) {
                     if (ix > -1) {
                         //remove
                         selectedCarriers.splice(ix, 1);
+
+                        //если был снят выбор не с "все авиакомпании" - то
+                        if (allIx > -1) {
+                            //снимаем выбор с "все авиакомпании"
+                            selectedCarriers.splice(allIx, 1);
+                        }
                     }
                 }
-
             }
 
 
